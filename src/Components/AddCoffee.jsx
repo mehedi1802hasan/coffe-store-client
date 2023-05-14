@@ -116,7 +116,7 @@ const AddCoffee = () => {
        
       </div>
       <div className="my-8 text-3xl font-bold text-center text-green-500">
-      <Link to="/">View CoffeeCards</Link>
+      <Link className='text-green-600 btn' to="/">View CoffeeCards</Link>
       </div>
       </div>
     );

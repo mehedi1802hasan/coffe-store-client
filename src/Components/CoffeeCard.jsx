@@ -1,10 +1,10 @@
 import React from 'react';
 import { useState } from 'react';
-//import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-const CoffeeCard = ({coffee}) => {
+const CoffeeCard = ({coffee,coffees,setCoffees}) => {
    // const [users,setUsers]=useState(coffee)
-    const {_id,name,quntity,supplier,category,details,photoUrl}=coffee;
+    const {_id,name,quntity,supplier,category,taste,details,photoUrl}=coffee;
     
     const handleDelete=_id=>{
         console.log(_id)
@@ -15,11 +15,11 @@ const CoffeeCard = ({coffee}) => {
         .then(data=>{
             console.log(data)
           
-         /**   if(data.deletedCount>0){
+          if(data.deletedCount>0){
                 alert('deleted successfully');
-                const remaining  = users.filter(user=>user._id !== id);
-                setUsers(remaining);
-         * */ 
+                const remaining  = coffees.filter(cof=>cof._id !== _id);
+                setCoffees(remaining);
+          }
         })
     }
     return (
@@ -31,13 +31,15 @@ const CoffeeCard = ({coffee}) => {
           <p>{details}</p>
           <p>{category}</p>
           <p>{supplier}</p>
+          <p>{taste}</p>
           <p>{quntity}</p>
 </div>
 <div>
           <div className="justify-end my-10 card-actions">
           <div className="gap-3 btn-group btn-group-vertical">
-  <button className="btn ">View</button>
-  <button className="btn">edit</button>
+          <button className="btn">view</button>
+<Link to={`updateCoffee/${_id}`}>  <button className="btn ">edit</button></Link>
+ 
   <button onClick={()=>handleDelete(_id)} className="btn">X</button>
 </div>
           </div>
